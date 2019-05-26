@@ -432,6 +432,7 @@ namespace Jwl
 		vec4 result;
 		switch (colors[index]->GetFormat())
 		{
+		case TextureFormat::R_8:
 		case TextureFormat::RGB_8:
 		case TextureFormat::RGBA_8:
 		case TextureFormat::sRGB_8:
@@ -443,6 +444,7 @@ namespace Jwl
 				result = vec4(pixel[0], pixel[1], pixel[2], pixel[3]) / static_cast<float>(UCHAR_MAX);
 			} break;
 
+		case TextureFormat::R_16:
 		case TextureFormat::RGB_16:
 		case TextureFormat::RGBA_16:
 			{
@@ -452,6 +454,7 @@ namespace Jwl
 				result = vec4(pixel[0], pixel[1], pixel[2], pixel[3]) / static_cast<float>(USHRT_MAX);
 			} break;
 
+		case TextureFormat::R_32:
 		case TextureFormat::RGB_32:
 		case TextureFormat::RGBA_32:
 			{
@@ -465,10 +468,12 @@ namespace Jwl
 					static_cast<float>(pixel[3])) / static_cast<float>(UINT_MAX);
 			} break;
 
+		case TextureFormat::R_16F:
+		case TextureFormat::R_32F:
 		case TextureFormat::RGB_16F:
+		case TextureFormat::RGB_32F:
 		case TextureFormat::RGBA_16F:
 		case TextureFormat::RGBA_32F:
-		case TextureFormat::RGB_32F:
 			glReadPixels(static_cast<int>(position.x), static_cast<int>(position.y), 1, 1, format, GL_FLOAT, &result.x);
 			break;
 
