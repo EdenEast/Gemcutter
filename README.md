@@ -15,6 +15,7 @@ Highlight features include:
 * A modular and extendable particle system
 * Audio powered by OpenAL
 * Mesh and Texture loading
+* [GUI support](Resources/Docs/GUI.md)
 * [FreeType text rendering](Resources/Docs/Text.md)
 * Event dispatching and response
 * Robust fixed-timestep updates
@@ -34,7 +35,6 @@ Code samples are available and maintained [here](https://github.com/EmilianC/Jew
 Jewel3D is always being updated and improved. See the [Trello board](https://trello.com/b/Oc2GFT2A/jewel3d) to follow development.
 
 Future highlight features include:
-* GUI support
 * A fully featured world/UI editor
 * Bullet physics integration
 * Configurable memory management
