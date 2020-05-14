@@ -187,6 +187,21 @@
     <ClCompile Include="Jewel3D\Resource\Material.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
+    <ClCompile Include="Jewel3D\GUI\Rectangle.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Jewel3D\GUI\Screen.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Jewel3D\GUI\Widget.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Jewel3D\GUI\Button.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Jewel3D\GUI\Image.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Jewel3D\Precompiled.h" />
@@ -351,6 +366,21 @@
     </ClInclude>
     <ClInclude Include="Jewel3D\Resource\Material.h">
       <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Jewel3D\GUI\Rectangle.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Jewel3D\GUI\Screen.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Jewel3D\GUI\Widget.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Jewel3D\GUI\Button.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Jewel3D\GUI\Image.h">
+      <Filter>GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
