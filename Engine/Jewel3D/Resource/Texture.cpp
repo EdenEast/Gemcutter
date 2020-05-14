@@ -147,7 +147,7 @@ namespace Jwl
 		}
 		else
 		{
-			auto image = Image::Load(filePath, true, false);
+			auto image = RawImage::Load(filePath, true, false);
 			if (image.data == nullptr)
 				return false;
 
@@ -404,7 +404,7 @@ namespace Jwl
 
 	//-----------------------------------------------------------------------------------------------------
 
-	Image::Image(int _width, int _height, TextureFormat _format, const unsigned char* _data)
+	RawImage::RawImage(int _width, int _height, TextureFormat _format, const unsigned char* _data)
 		: width(_width)
 		, height(_height)
 		, format(_format)
@@ -412,12 +412,12 @@ namespace Jwl
 	{
 	}
 
-	Image::~Image()
+	RawImage::~RawImage()
 	{
 		free(const_cast<unsigned char*>(data));
 	}
 
-	Image Image::Load(std::string_view file, bool flipY, bool sRGB)
+	RawImage RawImage::Load(std::string_view file, bool flipY, bool sRGB)
 	{
 		int width = 0;
 		int height = 0;
@@ -427,7 +427,7 @@ namespace Jwl
 		if (data == nullptr)
 		{
 			Jwl::Error("Texture: ( %s )\n%s", file.data(), SOIL_last_result());
-			return Image(0, 0, TextureFormat::RGB_8, nullptr);
+			return RawImage(0, 0, TextureFormat::RGB_8, nullptr);
 		}
 
 		// Invert the Y axis for OpenGL texture addressing.
@@ -447,16 +447,16 @@ namespace Jwl
 
 		if (numChannels == 3)
 		{
-			return Image(width, height, sRGB ? TextureFormat::sRGB_8 : TextureFormat::RGB_8, data);
+			return RawImage(width, height, sRGB ? TextureFormat::sRGB_8 : TextureFormat::RGB_8, data);
 		}
 		else if (numChannels == 4)
 		{
-			return Image(width, height, sRGB ? TextureFormat::sRGBA_8 : TextureFormat::RGBA_8, data);
+			return RawImage(width, height, sRGB ? TextureFormat::sRGBA_8 : TextureFormat::RGBA_8, data);
 		}
 		else
 		{
 			Jwl::Error("Texture: ( %s )\nUnsupported format. Must have 3 or 4 color channels.", file.data());
-			return Image(0, 0, TextureFormat::RGB_8, nullptr);
+			return RawImage(0, 0, TextureFormat::RGB_8, nullptr);
 		}
 	}
 }

@@ -137,7 +137,7 @@ bool TextureEncoder::Convert(std::string_view source, std::string_view destinati
 	const Jwl::TextureWrap wrapX = Jwl::StringToTextureWrap(metadata.GetString("wrap_x"));
 	const Jwl::TextureWrap wrapY = Jwl::StringToTextureWrap(metadata.GetString("wrap_y"));
 
-	auto image = Jwl::Image::Load(source, !isCubemap, isSRGB);
+	auto image = Jwl::RawImage::Load(source, !isCubemap, isSRGB);
 	if (image.data == nullptr)
 		return false;
 
