@@ -1,8 +1,10 @@
 // Copyright (c) 2017 Emilian Cioca
 #include "Jewel3D/Precompiled.h"
 #include "Application.h"
-#include "Logging.h"
-#include "Timer.h"
+#include "Jewel3D/Application/Logging.h"
+#include "Jewel3D/Application/Timer.h"
+#include "Jewel3D/GUI/Button.h"
+#include "Jewel3D/GUI/Widget.h"
 #include "Jewel3D/Input/Input.h"
 #include "Jewel3D/Rendering/Light.h"
 #include "Jewel3D/Rendering/ParticleEmitter.h"
@@ -385,7 +387,7 @@ namespace Jwl
 			__int64 currentTime = Timer::GetCurrentTick();
 			if (currentTime - lastFpsCapture >= Timer::GetTicksPerSecond())
 			{
-				// We don't want to update the timer variable with "+= 1.0" here. After a lag spike this 
+				// We don't want to update the timer variable with "+= 1.0" here. After a lag spike this
 				// would cause FPS to suddenly be recorded more often than once a second.
 				lastFpsCapture = currentTime;
 
@@ -439,6 +441,13 @@ namespace Jwl
 		EventQueue.Dispatch();
 
 		// Update engine components.
+		Widget::UpdateAll();
+
+		for (auto& button : All<Button>())
+		{
+			button.Update();
+		}
+
 		for (Entity& entity : With<ParticleUpdaterTag>())
 		{
 			entity.Get<ParticleEmitter>().Update();
