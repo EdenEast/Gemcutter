@@ -15,3 +15,13 @@ target_link_libraries(font_encoder
 		gemcutter
 		freetype
 )
+
+# Copy the required .DLLs next to the executable.
+get_target_property(FREETYPE_BINARIES_DIR freetype INTERFACE_LINK_DIRECTORIES)
+get_target_property(FONT_ENCODER_BINARY_DIR font_encoder BINARY_DIR)
+
+add_custom_command(TARGET font_encoder POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy "${FREETYPE_BINARIES_DIR}/freetype6.dll" "${FONT_ENCODER_BINARY_DIR}/Release/"
+	COMMAND ${CMAKE_COMMAND} -E copy "${FREETYPE_BINARIES_DIR}/zlib1.dll" "${FONT_ENCODER_BINARY_DIR}/Release/"
+	VERBATIM
+)
